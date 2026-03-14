@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset=""UTF-8">
+    <meta name=""biewpoint" content=""widthe=device-width, initial-scale="1.0">
+    <title>Writing Prompt Generator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel= "icon" type="image/o-icon" href="assets/images/jayecopy.png">
+    <!-- comment-->
+
+</head>
+<body>
+<body class="prompt-page">
+    <div class="layout">
+        <aside class="side-panel left-panel">
+            <div class="shape s1"></div>
+            <div class="shape s2"></div>
+            <div class="shape s3"></div> 
+        </aside> 
+        <main class="center-pannel"
+        
+<h1>Writing Prompt Generator</h1>
+
+      <div class="controls">
+        <label for="length">Story Length</label>
+        <select id="length">
+          <option value="short">Short</option>
+          <option value="medium">Medium</option>
+          <option value="long">Long</option>
+        </select>
+
+        <label for="genre">Genre</label>
+        <select id="genre">
+          <option value="comedy">Comedy</option>
+          <option value="romance">Romance</option>
+          <option value="horror">Horror</option>
+        </select>
+
+        <button id="generateBtn">Generate</button>
+      </div>
+
+      <div id="promptBox">Your prompt will appear here.</div>
+
+      <div class="typewriter-wrap">
+        <img src="assets/images/typewriter.png" alt="Typewriter">
+        <textarea id="storyInput" placeholder="type ideas here... buttons at the botom to save your work"></textarea>
+      </div>
+
+      <div class="bottom-buttons">
+        <button class="action-btn" id="saveTxtBtn">Save TXT</button>
+        <button class="action-btn" id="savePdfBtn">Save PDF</button>
+        <a class="action-btn about-link" href="index.html">About Me</a>
+      </div>
+    </main>
+
+    <aside class="side-panel right-panel">
+      <div class="shape shape4"></div>
+      <div class="shape shape5"></div>
+      <div class="shape shape6"></div>
+    </aside>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+Hi, I’m judy henry, though I usually go by jaye in creative spaces.
+
+I’m currently studying Cyber Criminology at Florida State University, a program that blends both computer science and criminology. Because of that, I’ve spent a lot of time working across technical courses as well as studying how technology, security, and people interact in the real world.
+
+Most of my work right now is focused on front-end development and UX/UI design. I like building things that are both useful and visually interesting, and I’m especially drawn to projects where design and development meet. Over time, I’m hoping to grow further into full-stack development so I can build entire systems from the interface down to the logic behind it.
+
+Outside of programming, I’ve always been a creative person. A lot of the visuals on this site — including many of the icons and illustrations — were drawn by hand by me. I like mixing art with technology and experimenting with ways to make websites feel a little more personal and interactive.
+
+You’ll probably notice small pieces of my life scattered throughout the site too, things like art, photography, plants I’m growing, and the occasional appearance from my two dogs.
+
+If you’re visiting on the homepage, the room illustration above is interactive, so feel free to click around and explore.
+Or if that’s not your thing, you can just scroll, everything is listed below.
+
+
+
+
+
+
+Outside of development, I enjoy creative and hands-on hobbies that have been part of my life for years.
+Some of my favorites include: ice skating, sewing, crocheting, painting, digital illustration.
+I started crocheting and painting when I was young while spending time at my grandmother’s house. Those early creative hobbies eventually grew into a love for digital art and design, which now influences the way I build and design software.

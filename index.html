@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- char encoding -->
+    <meta charset="UTF-8">
+
+    <!--scaling  - responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--title -->
+    <title>Jaye's Website</title>
+
+    <!-- image in browser = favicon ... see if you can fix or change -->
+    <link rel="icon" type="image/png" href="assets/images/jaye1.png">
+
+ 
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry Bomb One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mogra&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inria Serif&display=swap" rel="stylesheet">
+
+   <!-- css -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+
+</head>
+
+
+<body>
+<!--header bar at the top (nav bar)-->
+    <header class="header">
+        <div>
+            <div class="title-name">Jaye Tech | Developer</div>
+            <div class="title-sub">✦ Judy Henry ✦ Front End Dev ✦ Full Stack Dev ✦ Creative ✦</div>
+        </div>
+
+    <nav class="main-nav">
+
+        <div class="header-links">
+        <button class="nav-btn" data-modal="about">About Me</button>
+        <button class="nav-btn" data-modal="projects">Projects</button>
+        <a href="https://www.linkedin.com/in/judyhenry/" target="_blank" title="Linkedin">Contact</a>
+        </div>
+    </nav>
+    </header>
+
+<!--room section-->
+    <section class="hero">
+        <img src="assets/images/nebula-bg.png" alt="nebula background" class="nebula-bg">
+        
+
+    <div class="room">
+
+        <img src="assets/images/room.png" alt="Illustrated room" class="room-layer base-room">
+
+        <img src="assets/images/day-window.png" alt="" class="room-layer window-day hidden" id="windowDay">
+        <img src="assets/images/night-window.png" alt="" class="room-layer window-night" id="windowNight">
+
+        <img src="assets/images/lamp-off.png" alt="" class="lamp-off hidden" id="lampOff">
+        <div class="room-layer dark-overlay hidden" id="darkOverlay"></div>
+
+        <!-- tech / projects -->
+        <button class="hitbox computer-hitbox" id="computerBtn">
+            <span class="hover-pill">Projects</span>
+        </button>
+
+        <!-- art -->
+        <button class="hitbox easel-hitbox" id="easelBtn">
+            <span class="hover-pill">Latest Art</span>
+        </button>
+
+        <img src="assets/images/art-cover.png" alt="painting" class="room-layer painting-art">
+
+        <button class="hitbox photo-hitbox" id="photoBtn">
+            <span class="hover-pill">Photos</span>
+        </button>
+
+        <!-- about -->
+        <button class="hitbox char-hitbox" id="boardBtn">
+            <span class="hover-pill">About Me</span>
+            <span class="char-bubble" id="charBubble"></span>
+        </button>
+        
+
+        <!--hobbies-->
+        
+        <button class="hitbox skating-hitbox" id="skateBtn">
+            <span class="hover-pill">Skating</span>
+        </button>
+        <button class="hitbox books-hitbox" id="booksBtn">
+            <span class="hover-pill">Skills & Education</span>
+        </button>
+        <button class="hitbox sew-hitbox" id="sewBtn">
+            <span class="hover-pill">Sewing</span>
+        </button>
+
+        <!-- lamp toggle -->
+        <button class="hitbox lamp-hitbox" id="lampBtn" aria-label="Toggle lamp"></button>
+
+        <!-- window toggle -->
+        <button class="hitbox window-hitbox" id="windowBtn" aria-label="Toggle window"></button>
+
+        <!-- easter eggs -->
+        <button class="hitbox tori-hitbox easter-egg" id="toriBtn" aria-label="woof">
+            <span class="dog-bubble" id="toriBubble"></span>
+        </button>
+
+        <button class="hitbox mimi-hitbox easter-egg" id="mimiBtn" aria-label="woof, im mimi">
+            <span class="dog-bubble" id="mimiBubble"></span>
+        </button>
+        <button class="hitbox plant-hitbox easter-egg" id="plantBtn" aria-label="plantssss"></button>
+        
+
+    </div>
+
+
+
+
+    </section>
+
+    <!--body cards-->
+    <section class="cards-section" id="explore">
+    <div class="cards-grid">
+
+        <article class="info-card card-tall tile-button" data-modal="about">
+            <div class="card-inner">
+                <h2>About Me</h2>
+                <p>
+                    <img src="assets/images/jaye.png" class="about-photo">
+                    <span class="tile-hint">view more</span>
+                </p>
+            </div>
+        </article>
+
+        <article class="info-card card-small tile-button" data-modal="contact">
+            <div class="card-inner">
+                <h2>Contact Me</h2>
+                <p>I’m always interested in new opportunities and collaborations, so please don’t hesitate to reach out.</p>
+                <span class="tile-hint">view more</span>
+                
+            </div>
+        </article>
+
+        
+
+        <article class="info-card card-feature tile-button" data-modal="projects">
+            <div class="card-inner">
+                <h2>Projects</h2>
+                <ul>
+                    <li>Web projects built with HTML, CSS, and JavaScript | Custom Illustrations</li>
+                    <li>Mobile apps developed with Flutter | Algorithm-driven & game logic</li>
+                    
+                </ul>
+
+                <span class="tile-hint">view more</span>
+            </div>
+        </article>
+
+        <article class="info-card card-feature tile-button" data-modal="skills">
+            <div class="card-inner">
+                <h2>Skills and Education</h2>
+                <ul>
+                <li>Cyber Criminology student at Florida State University. </li>  
+                <li>Interested in Front-End Development, UX/UI, Full-Stack Development, and Cybersecurity</li>
+                </ul>
+                <span class="tile-hint">view more</span>
+            </div>
+        </article>
+
+        <article class="info-card card-small tile-button" data-modal="hobbies">
+            <div class="card-inner">
+                <h2>Hobbies</h2>
+                <p>Creative things I love outside of coding.</p>
+                <span class="tile-hint">view more</span>
+            </div>
+        </article>
+
+        <article class="info-card card-small tile-button" data-modal="art">
+            <div class="card-inner">
+                <h2>Latest art</h2>
+                <p>
+                    <img src="assets/images/photos/art1.png" class="latest-photo">
+                </p>
+            </div>
+        </article>
+
+        <article class="info-card card-small tile-button" data-modal="photos">
+            <div class="card-inner">
+                <h2>Photos</h2>
+                <img src="assets/images/art-cam.png" class="photo-photo">
+                <span class="tile-hint">view more</span>
+            </div>
+        </article>
+
+        <article class="info-card card-small tile-button" data-modal="plants">
+            <div class="card-inner">
+                <h2>Plants</h2>
+                <!--<p>My green little corner</p>-->
+                <img src="assets/images/art-plant.png" class="plant-photo">
+                <!--<span class="tile-hint">view more</span>-->
+            </div>
+        </article>
+
+        
+
+        <article class="info-card card-feature tile-button" data-modal="blog">
+            <div class="card-inner">
+                <h2>Blog</h2>
+                <p>Updates, thoughts, process notes, and devlogs.</p>
+                <span class="tile-hint">view more</span>
+            </div>
+        </article>
+        
+
+    </div>
+</section>
+
+
+<div class="modal-overlay hidden" id="mainModal">
+    <div class="modal-box">
+        <button class="modal-close" id="closeModalBtn" aria-label="Close popup">×</button>
+
+        <h2 id="modalTitle"></h2>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+const windowBtn = document.getElementById("windowBtn");
+const windowDay = document.getElementById("windowDay");
+const windowNight = document.getElementById("windowNight");
+
+windowBtn.addEventListener("click", () => {
+    windowDay.classList.toggle("hidden");
+    windowNight.classList.toggle("hidden");
+});
+
+const lampBtn = document.getElementById("lampBtn");
+const lampOff = document.getElementById("lampOff");
+const darkOverlay = document.getElementById("darkOverlay");
+const charBubble = document.getElementById("charBubble");
+
+let lightIndex = 0;
+lampBtn.addEventListener("click", () => {
+
+    lampOff.classList.toggle("hidden");
+    darkOverlay.classList.toggle("hidden");
+
+    if (!darkOverlay.classList.contains("hidden"))
+    {
+        charBubble.textContent = lightMessages[lightIndex];
+        charBubble.classList.add("show");
+
+        clearTimeout(charBubble.hideTimer);
+
+        charBubble.hideTimer = setTimeout(() => {
+            charBubble.classList.remove("show");
+        }, 2000);
+
+        lightIndex = (lightIndex + 1) % lightMessages.length;
+    }
+
+});
+
+const toriBtn = document.getElementById("toriBtn");
+const mimiBtn = document.getElementById("mimiBtn");
+const toriBubble = document.getElementById("toriBubble");
+const mimiBubble = document.getElementById("mimiBubble");
+
+const toriMessages = [
+    "woof! i'm tori ✦",
+    "hi friend! ♡",
+    "i just turned one",
+    "professional sock thief",
+    "zoomies incoming",
+    "grrrrrr",
+    "im the princess of this house",
+
+
+
+
+];
+
+const mimiMessages = [
+    "woof! i'm mimi ✦",
+    "hello there ♡",
+    "im the oldest",
+    "grrrrrrr",
+    "im 3 years old",
+    "dont tell tori, but i'm the favorite",
+    "i am a couch potato",
+    "i've been rescued for a year now",
+
+
+
+
+];
+
+let toriIndex = 0;
+let mimiIndex = 0;
+
+function showBubble(bubble, messages, index)
+{
+    bubble.textContent = messages[index];
+    bubble.classList.add("show");
+
+    clearTimeout(bubble.hideTimer);
+
+    bubble.hideTimer = setTimeout(() => {
+        bubble.classList.remove("show");
+    }, 1800);
+}
+
+toriBtn.addEventListener("click", () => {
+    showBubble(toriBubble, toriMessages, toriIndex);
+    toriIndex = (toriIndex + 1) % toriMessages.length;
+});
+
+mimiBtn.addEventListener("click", () => {
+    showBubble(mimiBubble, mimiMessages, mimiIndex);
+    mimiIndex = (mimiIndex + 1) % mimiMessages.length;
+});
+
+
+const lightMessages = [
+"who turned off the lights?",
+"hey! i was working!",
+"it's dark in here…",
+];
+
+
+
+
+const expandableCards = document.querySelectorAll(".is-expandable");
+
+expandableCards.forEach((card) =>
+{
+    const toggle = card.querySelector(".card-toggle");
+
+    if (toggle)
+    {
+        toggle.addEventListener("click", () =>
+        {
+            card.classList.toggle("expanded");
+
+            const isExpanded = card.classList.contains("expanded");
+            toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+        });
+    }
+});
+
+</script>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
