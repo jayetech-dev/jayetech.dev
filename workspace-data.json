@@ -1,0 +1,90 @@
+[
+  {
+    "id": "post1",
+    "type": "photo",
+    "template": "tape-single",
+    "label": "PI 5",
+    "image": "photos/workspace/img1.png",
+    "alt": "PI 5 image",
+    "left": "230px",
+    "top": "150px",
+    "width": "250px",
+    "rotation": "-4deg",
+    "title": "Pi 5",
+    "date": "March 26'",
+    "content": [
+      "Using the Raspberry Pi 5 to explore a range of system level projects, including ad-blocking setups, understanding operating systems, and creating a portable coding environment. This device serves as a flexible platform for learning networking, system configuration, and expanding into more advanced hardware-based development."
+    ]
+  },
+  {
+    "id": "post2",
+    "type": "photo",
+    "template": "tape-corners",
+    "label": "PICO Microcontrollers",
+    "image": "photos/workspace/img2.png",
+    "alt": "PICO microcontrollers image",
+    "left": "760px",
+    "top": "260px",
+    "width": "270px",
+    "rotation": "3deg",
+    "title": "PICO Microcontrollers",
+    "date": "March 26'",
+    "content": [
+      "Developing a microcontroller based system using the Raspberry Pi Pico to control a motorized mechanism that physically activates a button triggered camera for remote pet monitoring. The system enables remote interaction through a simple interface, focusing on hardware control, real-time input/output, and practical embedded system design."
+    ]
+  },
+  {
+    "id": "post3",
+    "type": "note",
+    "template": "sticky-note",
+    "label": "",
+    "left": "1320px",
+    "top": "220px",
+    "width": "260px",
+    "rotation": "-3deg",
+    "title": "Notes",
+    "date": "April 26'",
+    "noteTitle": "Museum",
+    "noteText": "TODO: Make 3D Museum building ✦ Select Art work ✦ Learn the basics of three.js ✦ Testing vercel hosting / self hosting ✦ Design interior",
+    "content": [
+      "Conceptualizing an interactive, walkable digital museum experience that allows users to explore curated art and artifacts in a 3D environment"
+    ]
+  },
+  {
+    "id": "post4",
+    "type": "photo",
+    "template": "tape-bottom",
+    "label": "Pi Zero",
+    "image": "photos/workspace/img3.png",
+    "alt": "Pi Zero image",
+    "left": "400px",
+    "top": "460px",
+    "width": "290px",
+    "rotation": "5deg",
+    "title": "Pi Zero",
+    "date": "April 26'",
+    "content": [
+      "Building a Raspberry Pi Zero based cyberdeck designed as a dedicated, portable device to run a custom .NET/C# dashboard for productivity, study tracking, and personal organization. The project emphasizes a focused, single-purpose system that integrates software and hardware into a compact, functional tool."
+    ]
+  },
+{
+    "id": "post5",
+    "type": "note",
+    "template": "sticky-note",
+    "label": "hi",
+    "left": "1020px",
+    "top": "820px",
+    "width": "260px",
+    "rotation": "-3deg",
+    "title": "Web",
+    "date": "April 26'",
+    "noteTitle": "Website",
+    "noteText": "TODO: ✦ Add music ✦ Test mobile ✦ Add more photos ✦ Add more artwork ✦",
+    "content": [
+      "Conceptualizing an interactive, walkable digital museum experience that allows users to explore curated art and artifacts in a 3D environment"
+    ]
+  }
+
+
+
+]
