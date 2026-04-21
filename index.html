@@ -1,672 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaye's Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Judy's Website!</title>
 
-    <link rel="icon" type="image/png" href="photos/jaye-icon.png">
+  <link rel="icon" type="image/png" href="photos/jaye1.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mogra&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mogra&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="stylesheet.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: url("photos/landing.png") no-repeat center center/cover;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      color: white;
+    }
+
+    body::before {
+      content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to left, rgba(5, 10, 20, 0.35), rgba(5, 10, 20, 0.05));
+  z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: 12%;
+      top: 18%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(111, 184, 255, 0.22), transparent 65%);
+      filter: blur(20px);
+      z-index: 0;
+    }
+
+    .right-panel {
+      position: relative;
+      z-index: 1;
+      width: min(42%, 520px);
+      margin-right: 5%;
+      padding: 40px 30px;
+      border-radius: 28px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.14),
+        rgba(255, 255, 255, 0.06)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .right-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.03) 30%,
+        transparent 55%
+      );
+      pointer-events: none;
+    }
+
+    .right-panel::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+
+    h1 {
+  font-family: "Limelight", serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.25);
+}
+
+h2 {
+  font-family: "Italiana", serif;
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tags {
+  font-family: "Mogra", cursive;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 28px;
+}
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      color: white;
+      font-family: "Inria Serif", serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.17),
+        rgba(255,255,255,0.07)
+      );
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 8px 18px rgba(0,0,0,0.16);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: linear-gradient(
+        135deg,
+        rgba(120, 190, 255, 0.26),
+        rgba(255, 255, 255, 0.12)
+      );
+      box-shadow:
+        0 10px 26px rgba(80, 150, 255, 0.22),
+        0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-portfolio {
+      font-family: "Mogra", cursive;
+      color: #091224;
+      border: none;
+      background: linear-gradient(
+        90deg,
+        #ff92d8,
+        #b18cff,
+        #6ccfff,
+        #72ffd7,
+        #ffd66e
+      );
+      background-size: 300% 300%;
+      box-shadow:
+        0 0 24px rgba(123, 199, 255, 0.38),
+        0 12px 28px rgba(124, 120, 255, 0.26);
+      animation: shift 8s ease infinite;
+    }
+
+    .btn-portfolio:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow:
+        0 0 32px rgba(141, 222, 255, 0.52),
+        0 16px 34px rgba(140, 104, 255, 0.3);
+    }
+
+    @keyframes shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .divider {
+      width: 70px;
+      height: 2px;
+      margin: 0 auto 22px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.85), transparent);
+      border-radius: 2px;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .right-panel {
+        width: 100%;
+        max-width: 540px;
+        margin-right: 0;
+      }
+    }
+  </style>
 </head>
+<body>
 
-<body class="theme-light">
-    <div class="container">
-        <header class="site-header">
-            <div class="header-left">
-                <h1 class="title-name">Jaye Tech | Developer</h1>
-                <h2 class="title-sub">✦ Judy Henry Diaz ✦ Front End Dev ✦ Full Stack Dev ✦ Creative ✦</h2>
-            </div>
+  <div class="right-panel">
+    <h1>Judy Henry Diaz</h1>
+    <h2>Jaye</h2>
+    <div class="divider"></div>
+    <div class="tags">✦ Front End Dev ✦ Full Stack Dev ✦ Creative ✦</div>
 
-            <div class="header-right">
-                <button class="nav-btn" data-modal="skills">Skills & Edu</button>
-                <button class="nav-btn" data-modal="projects">Projects</button>
-                <button class="nav-btn" data-modal="contact">Contact</button>
-                <button class="nav-btn menu-btn" id="openMenu" aria-label="Open menu">☰</button>
-            </div>
-        </header>
-
-        <main class="main-area">
-            <div class="interactive-guide" id="interactiveGuide">
-                <div class="interactive-guide-box" id="interactiveGuideBox">
-                    <p id="guideText">Hover to explore ✦ Click to open</p>
-                </div>
-            </div>
-
-            <!-- interactivew view -->
-            <section class="view-panel room-view active-view-panel" id="roomView">
-                
-    <div class="room-shell">
-    <img src="photos/background.png" alt="" class="room-layer nebula-bg">
-
-    <div class="room-stage">
-        <img src="photos/room.png" alt="Illustrated room" class="room-art">
-
-        <img src="photos/day-window.png" alt="" class="room-overlay window-day hidden" id="windowDay">
-        <img src="photos/night-window.png" alt="" class="room-overlay window-night" id="windowNight">
-
-        <img src="photos/lamp-off.png" alt="" class="room-overlay lamp-off hidden" id="lampOff">
-        <div class="room-overlay dark-overlay hidden" id="darkOverlay"></div>
-
-        <img src="photos/art-cover.png" alt="" class="room-overlay art-cover " id="room-art">
-        <div class="room-overlay dark-overlay hidden" id="darkOverlay"></div>
-
-        <img src="photos/phone.png" alt="" class="room-overlay room-phone" id="room-phone">
-
-
-        <div class="room-hitbox-area" id="roomHitboxArea"></div>
+    <div class="buttons">
+      <a href="JPHD-Resume.pdf" class="btn" target="_blank">Resume</a>
+      <a href="https://linkedin.com/in/judyhenry" class="btn" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Jayetech-dev" class="btn" target="_blank">GitHub</a>
+      <a href="mailto:judypat99@gmail.com" class="btn">Email</a>
+      <a href="portfolio.html" class="btn btn-portfolio">Proceed to Portfolio →</a>
     </div>
-
-    </div>
-</section>
-
-            <!-- tile view -->
-<section class="view-panel tile-view" id="tileView">
-    <div class="tiles-grid">
-        <article class="info-card tile-button card-third image-card" data-modal="about">
-            <div class="card-inner">
-                <h3>About Me</h3>
-
-                <div class="tile-cover-wrap">
-                    <div class="tile-cover-bubble">
-                        <img src="photos/jaye.png" alt="Jaye illustration" class="tile-cover tile-cover-character">
-                    </div>
-                </div>
-
-               
-            </div>
-        </article>
-
-        <article class="info-card tile-button card-third" data-modal="contact">
-            <div class="card-inner">
-                <h3>Contact Me</h3>
-                <p>I’m always interested in new opportunities and collaborations, so please don’t hesitate to reach out.</p>
-                <span class="tile-hint">view more</span>
-            </div>
-        </article>
-
-        <article class="info-card tile-button card-two-thirds" data-modal="projects">
-            <div class="card-inner">
-                <h3>Projects</h3>
-                <ul>
-                    <li>Web projects built with HTML, CSS, and JavaScript | Custom illustrations</li>
-                    <li>Mobile apps developed with Flutter | Algorithm-driven &amp; game logic</li>
-                </ul>
-                <span class="tile-hint">view more</span>
-            </div>
-        </article>
-
-        <article class="info-card tile-button card-two-thirds" data-modal="skills">
-            <div class="card-inner">
-                <h3>Skills &amp; Education</h3>
-                <ul>
-                    <li>Cyber Criminology student at Florida State University</li>
-                    <li>Interested in Front-End Development, UX/UI, Full-Stack Development, and Cybersecurity</li>
-                </ul>
-                <span class="tile-hint">view more</span>
-            </div>
-        </article>
-
-        <article class="info-card tile-button card-third" data-modal="hobbies">
-            <div class="card-inner">
-                <h3>Hobbies</h3>
-                <p>Creative things I love outside of coding.</p>
-                <span class="tile-hint">view more</span>
-            </div>
-        </article>
-
-        <article class="info-card tile-button card-third image-card" data-modal="art">
-            <div class="card-inner">
-                <h3>Latest Art</h3>
-
-                <div class="tile-cover-wrap">
-                    <div class="tile-cover-bubble tile-cover-bubble-art">
-                        <img src="photos/pictures/art1.png" alt="Latest art preview" class="tile-cover tile-cover-art">
-                    </div>
-                </div>
-
-                
-            </div>
-        </article>
-
-        <article class="info-card tile-button card-third image-card" data-modal="photos">
-            <div class="card-inner">
-                <h3>Photos</h3>
-
-                <div class="tile-cover-wrap">
-                    <div class="tile-cover-bubble">
-                        <img src="photos/art-cam.png" alt="Camera illustration" class="tile-cover">
-                    </div>
-                </div>
-
-                
-            </div>
-        </article>
-
-        <article class="info-card tile-button card-third image-card" data-modal="plants">
-            <div class="card-inner">
-                <h3>Plants</h3>
-
-                <div class="tile-cover-wrap">
-                    <div class="tile-cover-bubble">
-                        <img src="photos/art-plant.png" alt="Plant illustration" class="tile-cover">
-                    </div>
-                </div>
-
-                
-            </div>
-        </article>
-
-        <a href="workspace.html" class="info-card tile-button card-two-thirds">
-    <div class="card-inner">
-        <h3>Workspace</h3>
-        <p>Updates, thoughts, process notes, and devlogs.</p>
-        <span class="tile-hint">view more</span>
-    </div>
-</a>
-
-        
-    </div>
-</section>
-
-    <!-- menu -->
-    <div class="menu-overlay hidden" id="menuOverlay">
-        <aside class="side-menu">
-            <button class="close-btn" id="closeMenu" aria-label="Close menu">✕</button>
-
-            <div class="menu-profile">
-                <img src="photos/jaye.png" alt="Jaye profile photo" class="profile-pic">
-                <div class="profile-text">
-                    <h2>Jaye Tech</h2>
-                    <p>Hi, my name is Judy! I am a creative developer blending design and code.</p>
-                </div>
-            </div>
-
-            <div class="menu-controls">
-                <div class="control-group">
-                    <span class="control-label">Theme</span>
-                    <div class="toggle-bar">
-                        <button class="mini-toggle" id="lightModeBtn" type="button">☀️ Light</button>
-                        <button class="mini-toggle" id="darkModeBtn" type="button">🌙 Dark</button>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <span class="control-label">View</span>
-                    <div class="toggle-bar">
-                        <button class="view-toggle active-toggle" id="roomViewBtn" type="button">✨ Interactive</button>
-                        <button class="view-toggle" id="tileViewBtn" type="button">▦ Tiles</button>
-                    </div>
-                    <p class="menu-help">If you would rather just read the content, switch to Tile View.</p>
-                </div>
-            </div>
-
-            <div class="toggle-row">
-                <span>Mute</span>
-                <button class="toggle-btn" id="muteToggle" type="button">🔊</button>
-            </div>
-        </aside>
-    </div>
-
-    <!-- modal -->
-    <div class="modal-overlay hidden" id="modalOverlay">
-        <div class="modal-box">
-            <button class="modal-close" id="modalClose" aria-label="Close popup">×</button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-
-    <!-- stored content of the blurbs -->
-    <div class="hidden-storage" id="modal-storage">
-        <section id="about-content">
-            <h2>About Me</h2>
-            <p>Hi, I’m Judy Henry, though I often go by Jaye in creative spaces.</p>
-            <p>I enjoy blending design, code, and interactive ideas into projects that feel personal and visually interesting.</p>
-        </section>
-
-        <section id="projects-content">
-    <h2>Projects</h2>
-
-    <div class="project-stack">
-        <article class="project-card">
-            <div class="project-top">
-                <div>
-                    <h3>Jayetech.dev</h3>
-                    <p class="project-sub">Personal Portfolio Website</p>
-                </div>
-                <span class="project-status status-live">Live</span>
-            </div>
-
-            <p>
-                My first full portfolio project built with HTML, CSS, and JavaScript. I designed and illustrated the visual assets myself, which made the process especially fun since it allowed me to combine art and development in one project.
-            </p>
-            <p>
-                This project helped me better understand how front-end technologies work together to create a functional and personalized website. There are more website updates coming!
-            </p>
-
-            <div class="project-pills">
-                <span class="project-pill">HTML</span>
-                <span class="project-pill">CSS</span>
-                <span class="project-pill">JavaScript</span>
-                <span class="project-pill">UI Design</span>
-                <span class="project-pill">Illustration</span>
-            </div>
-
-            <div class="project-progress-block">
-                <div class="project-progress-label">
-                    <span>Progress</span>
-                    <span>95%</span>
-                </div>
-                <div class="project-progress-bar">
-                    <div class="project-progress-fill" style="width: 95%;"></div>
-                </div>
-            </div>
-
-            <div class="project-links">
-                <a href="https://github.com/jayetech-dev/jayetech.dev" target="_blank" rel="noopener noreferrer" class="project-link-btn">GitHub</a>
-            </div>
-        </article>
-
-
-
-
-
-
-
-
-
-        <article class="project-card">
-            <div class="project-top">
-                <div>
-                    <h3>Dashboard Website</h3>
-                    <p class="project-sub">Student Dashboard Web App</p>
-                </div>
-                <span class="project-status status-progress">In progress</span>
-            </div>
-
-            <p>
-                The project includes creating RESTful APIs, handling user data, and designing an interactive frontend interface, using .NET and C#. 
-            </p>
-            <p>
-                Currently focusing on API development, data flow, and integrating frontend components with backend services.
-            </p>
-
-            <div class="project-pills">
-                <span class="project-pill">HTML</span>
-                <span class="project-pill">CSS</span>
-                <span class="project-pill">JavaScript</span>
-                <span class="project-pill">ASP.Net</span>
-                <span class="project-pill">C#</span>
-            </div>
-
-            <div class="project-progress-block">
-                <div class="project-progress-label">
-                    <span>Progress</span>
-                    <span>25%</span>
-                </div>
-                <div class="project-progress-bar">
-                    <div class="project-progress-fill" style="width: 25%;"></div>
-                </div>
-            </div>
-
-        </article>
-
-
-
-
-
-
-
-
-
-
-        <article class="project-card">
-            <div class="project-top">
-                <div>
-                    <h3>Graduation Website</h3>
-                    <p class="project-sub">An elegant photo gallery, featuring graduation photos.</p>
-                </div>
-                <span class="project-status status-progress">In Progress</span>
-            </div>
-
-            <p>
-                Designed and developed an interactive graduation photography website featuring a dynamic gallery experience.
-            </p>
-            <p>
-                The site allows users to explore curated photo collections with visual effects, including black-and-white to color transitions, immersive layouts, and responsive design.
-            </p>
-
-            <div class="project-pills">
-                <span class="project-pill">HTML</span>
-                <span class="project-pill">CSS</span>
-                <span class="project-pill">JavaScript</span>
-                <span class="project-pill">UI Design</span>
-                <span class="project-pill">Illustration</span>
-            </div>
-
-            <div class="project-progress-block">
-                <div class="project-progress-label">
-                    <span>Progress</span>
-                    <span>85%</span>
-                </div>
-                <div class="project-progress-bar">
-                    <div class="project-progress-fill" style="width: 85%;"></div>
-                </div>
-            </div>
-
-            
-        </article>
-
-
-
-
-
-
-
-
-        <article class="project-card">
-            <div class="project-top">
-                <div>
-                    <h3>GameStation</h3>
-                    <p class="project-sub">Flutter Game App</p>
-                </div>
-                <span class="project-status status-building">Built</span>
-            </div>
-
-            <p>
-                A Flutter app that includes Tic-Tac-Toe and Minesweeper. It helped me combine UI development with algorithmic thinking, including using Breadth-First Search and queues for Minesweeper logic.
-            </p>
-
-            <div class="project-pills">
-                <span class="project-pill">Flutter</span>
-                <span class="project-pill">Dart</span>
-                <span class="project-pill">BFS</span>
-                <span class="project-pill">Queues</span>
-                <span class="project-pill">Mobile UI</span>
-            </div>
-
-            <div class="project-progress-block">
-                <div class="project-progress-label">
-                    <span>Progress</span>
-                    <span>100%</span>
-                </div>
-                <div class="project-progress-bar">
-                    <div class="project-progress-fill" style="width: 100%;"></div>
-                </div>
-            </div>
-
-            <div class="project-links">
-                <a href="https://github.com/jayetech-dev/gamestation" target="_blank" rel="noopener noreferrer" class="project-link-btn">GitHub</a>
-            </div>
-        </article>
-
-        <article class="project-card project-card-soft">
-            <div class="project-top">
-                <div>
-                    <h3>In Progress</h3>
-                    <p class="project-sub">Current ideas and concepts</p>
-                </div>
-                <span class="project-status status-ideas">Concepts</span>
-            </div>
-
-            <div class="concept-list">
-                <div class="concept-item">
-                    <span class="concept-name">Typewriter writing prompt generator</span>
-                    <span class="concept-stage">Planning</span>
-                </div>
-
-                <div class="concept-item">
-                    <span class="concept-name">Virtual museum website</span>
-                    <span class="concept-stage">Research</span>
-                </div>
-
-                <div class="concept-item">
-                    <span class="concept-name">Bakery & children’s book UI concepts</span>
-                    <span class="concept-stage">Designing</span>
-                </div>
-
-                <div class="concept-item">
-                    <span class="concept-name">New Flutter app ideas</span>
-                    <span class="concept-stage">Brainstorming</span>
-                </div>
-            </div>
-        </article>
-    </div>
-</section>
-
-        <section id="skills-content">
-    <h2>Skills & Education</h2>
-
-    <div class="skills-columns">
-
-        <div class="skills-block">
-            <h4>Skills</h4>
-            <ul class="skill-tags">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>C++</li>
-                <li>Python</li>
-                <li>C#</li>
-                <li>Flutter / Dart</li>
-                <li>Java</li>
-                <li>Raspberry Pi</li>
-            </ul>
-        </div>
-
-        <div class="skills-block">
-            <h4>Areas of Focus</h4>
-            <ul class="skill-tags">
-                <li>Front End Development</li>
-                <li>UX/UI Design</li>
-                <li>Full Stack Development</li>
-                <li>Cyber Security</li>
-            </ul>
-        </div>
-
-        <div class="skills-block">
-            <h4>Computer Science</h4>
-            <ul>
-                <li>Introduction to Programming in UNIX</li>
-                <li>Data Structures & Algorithms I & II</li>
-                <li>Computer Organization I</li>
-                <li>Operating Systems</li>
-                <li>Full Application Developement in C#</li>
-                <li>Advanced Programming in Java</li>
-            </ul>
-        </div>
-
-        <div class="skills-block">
-            <h4>Cyber Security</h4>
-            <ul>
-                <li>Computer Security Fundamentals</li>
-                <li>Offensive Computer Security</li>
-                <li>Cybercrime Forensics</li>
-                <li>Computer & Network System Administration</li>
-            </ul>
-        </div>
-
-
-        <div class="skills-block">
-            <h4>Work Experience - Lab Assistant | Florida State University</h4>
-            <h5>2024 - Current</h5>
-            <ul>
-                <li>Provide technical support in a Computer Science lab</li>
-                <li>Assisting users with system access, troubleshooting, and general technical issues in a multi-environment setup (Windows/Linux)</li>
-                <li>Support the operation and maintenance of lab equipment</li>
-                <li>Direct users to appropriate resources or staff for additional support</li>
-                
-            </ul>
-        </div>
-
-        <div class="skills-block">
-            <h4>Criminal Justice</h4>
-            <ul>
-                <li>Criminal Justice</li>
-                <li>Criminology</li>
-                <li>Cybercrime Detection & Forensics</li>
-                <li>Criminal Justice Systems Responses to Cybercrime</li>
-                <li>Juvenile Justice</li>
-                <li>Victimology</li>
-                <li>White Collar Crime</li>
-                <li>Research Methods in Criminology</li>
-            </ul>
-        </div>
-
-        
-
-        
-        
-
-         
-
-        <div class="skills-block">
-            <h4>Math Background</h4>
-            <ul>
-                <li>Discrete Math I & II</li>
-                <li>Calculus I & II</li>
-                <li>Applied Statistics for Engineers</li>
-            </ul>
-        </div>
-
-         <div class="skills-block">
-            <h4>Activities</h4>
-            <ul>
-                <li>Association For Computing Machinery Chair – FSU Chapter</li>
-                <li>Fall & Spring Coding Competitions</li>
-                <li>Multiple Cybersecurity CTF Competitions</li>
-            </ul>
-        </div>
-        
-
-        <div class="skills-block">
-            <h4>Languages</h4>
-            <ul>
-                <li>Native - English</li>
-                <li>Conversational - Spanish</li>
-                <li>Introductory knowledge - American Sign Language</li>
-            </ul>
-        </div>
-
-       
-
-    </div>
-</section>
-
-        <section id="contact-content">
-            <h2>Contact</h2>
-            <p>If you'd like to collaborate, feel free to reach out.</p>
-            <p><a href="https://www.linkedin.com/in/judyhenry/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-            <p><a href="https://github.com/Jayetech-dev/" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-            <p><a href="mailto:judypat99@gmail.com">Email Me</a></p>
-        </section>
-
-        <section id="art-content">
-            <h2>Latest Art</h2>
-            <p class="art-intro">✦ A recent piece I’ve been working on ✦</p>
-
-        <div class="art-feature">
-        <img
-            src="photos/pictures/art1.png"
-            alt="Latest artwork"
-            class="art-feature-img"
-            id="artFeature"
-        >
-    </div>
-</section>
-
-        <!--<section id="blog-content">
-            <h2>Workspace</h2>
-            <p>Check back for more updates!</p>
-        </section> -->
-
-        <section id="hobbies-content">
-    <h2>Hobbies</h2>
-
-    <p class="hobby-intro">
-        A lot of these hobbies shape the way I think about creativity, detail, and design.
-    </p>
-
-    <div class="hobby-tags">
-        <span>Yoga</span>
-        <span>Ice Skating</span>
-        <span>Sewing</span>
-        <span>Crocheting</span>
-        <span>Painting</span>
-        <span>Digital Illustration</span>
-        <span>Walks with my dog</span>
-        <span>Switch Games</span>
-    </div>
-</section>
-
-
-
-        <section id="plants-content">
-            <h2>Oh no, I forgot to water my plant!! Can you help me?</h2>
-            
-
-        <div class="plant-scene">
-            <img src="photos/art-plant-small.png" alt="Small plant" class="plant-img plant-small" id="plantSmall">
-            <img src="photos/art-plant.png" alt="Grown plant" class="plant-img plant-grown hidden-plant" id="plantGrown">
-            <img src="photos/art-watercan.png" alt="Watering can" class="water-can" id="waterCan">
-
-        <button class="plant-water-btn" id="waterPlantBtn">Water plant</button>
-        </div>
-        </section>
-
-        <section id="photos-content">
-    <h2>Photo Album</h2>
-    <p class="photo-intro">✦ A little collection of favorite moments ✦</p>
-
-    <div class="photo-gallery">
-        
-
-        <div class="photo-thumb-grid">
-            <button class="photo-thumb-btn" data-photo="assets/images/photos/photo1.jpeg">
-                <img src="photos/pictures/photo1.jpeg" alt="Photo 1" class="photo-thumb">
-            </button>
-
-            <button class="photo-thumb-btn" data-photo="assets/images/photos/photo2.jpeg">
-                <img src="photos/pictures/photo2.jpeg" alt="Photo 2" class="photo-thumb">
-            </button>
-
-            <button class="photo-thumb-btn" data-photo="assets/images/photos/photo3.jpeg">
-                <img src="photos/pictures/photo3.jpeg" alt="Photo 3" class="photo-thumb">
-            </button>
-
-            <button class="photo-thumb-btn" data-photo="assets/images/photos/photo4.jpeg">
-                <img src="photos/pictures/photo4.jpeg" alt="Photo 4" class="photo-thumb">
-            </button>
-
-            <button class="photo-thumb-btn" data-photo="assets/images/photos/photo4.jpeg">
-                <img src="photos/pictures/photo5.jpeg" alt="Photo 5" class="photo-thumb">
-            </button>
-
-            <button class="photo-thumb-btn" data-photo="assets/images/photos/photo4.jpeg">
-                <img src="photos/pictures/photo6.jpeg" alt="Photo 6" class="photo-thumb">
-            </button>
-
-            <button class="photo-thumb-btn" data-photo="assets/images/photos/photo4.jpeg">
-                <img src="photos/pictures/photo7.jpeg" alt="Photo 7" class="photo-thumb">
-            </button>
-        </div>
-    </div>
-</section>
-
-    <script src="script.js"></script>
-
-    <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-
-<script defer src="/_vercel/insights/script.js"></script>
+  </div>
 
 </body>
 </html>

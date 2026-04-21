@@ -24,47 +24,67 @@ const guideBox = document.getElementById("interactiveGuideBox");
 const roomHitboxArea = document.getElementById("roomHitboxArea");
 
 let isMuted = false;
-let guideStep = 1;
 
-let guideStepTimer1 = null;
-let guideStepTimer2 = null;
-let guideStepTimer3 = null;
-let guideSwapTimer = null;
+/* guide state */
+const guideMessages = [
+    "This room is interactive ✦ feel free to explore",
+    "Don't want to click around? Change the view in the menu"
+];
 
-/*  menu  */
+let guideStep = 0;
+let guideSequenceTimeout = null;
+let guideFadeTimeout = null;
+let guideSwapTimeout = null;
 
-openMenu.addEventListener("click", () =>
+/* menu */
+
+if (openMenu && menuOverlay)
 {
-    menuOverlay.classList.remove("hidden");
-});
+    openMenu.addEventListener("click", () =>
+    {
+        menuOverlay.classList.remove("hidden");
+        hideInteractiveGuide();
+    });
+}
 
-closeMenu.addEventListener("click", () =>
+if (closeMenu && menuOverlay)
 {
-    menuOverlay.classList.add("hidden");
-});
-
-menuOverlay.addEventListener("click", (event) =>
-{
-    if (event.target === menuOverlay)
+    closeMenu.addEventListener("click", () =>
     {
         menuOverlay.classList.add("hidden");
-    }
-});
+    });
+}
 
-/*modal  */
+if (menuOverlay)
+{
+    menuOverlay.addEventListener("click", (event) =>
+    {
+        if (event.target === menuOverlay)
+        {
+            menuOverlay.classList.add("hidden");
+        }
+    });
+}
+
+/* modal */
 
 function openModal(modalName)
 {
     const section = document.getElementById(`${modalName}-content`);
 
-    if (!section)
+    if (!section || !modalContent || !modalOverlay)
     {
         return;
     }
 
     modalContent.innerHTML = section.innerHTML;
     modalOverlay.classList.remove("hidden");
-    menuOverlay.classList.add("hidden");
+
+    if (menuOverlay)
+    {
+        menuOverlay.classList.add("hidden");
+    }
+
     hideInteractiveGuide();
 
     if (modalName === "plants")
@@ -80,7 +100,10 @@ function openModal(modalName)
 
 function closeModal()
 {
-    modalOverlay.classList.add("hidden");
+    if (modalOverlay)
+    {
+        modalOverlay.classList.add("hidden");
+    }
 }
 
 document.querySelectorAll("[data-modal]").forEach((button) =>
@@ -91,25 +114,31 @@ document.querySelectorAll("[data-modal]").forEach((button) =>
     });
 });
 
-modalClose.addEventListener("click", closeModal);
-
-modalOverlay.addEventListener("click", (event) =>
+if (modalClose)
 {
-    if (event.target === modalOverlay)
-    {
-        closeModal();
-    }
-});
+    modalClose.addEventListener("click", closeModal);
+}
 
-/* themessssss  */
+if (modalOverlay)
+{
+    modalOverlay.addEventListener("click", (event) =>
+    {
+        if (event.target === modalOverlay)
+        {
+            closeModal();
+        }
+    });
+}
+
+/* themes */
 
 function setLightMode()
 {
     document.body.classList.remove("theme-dark");
     document.body.classList.add("theme-light");
 
-    lightModeBtn.classList.add("active-toggle");
-    darkModeBtn.classList.remove("active-toggle");
+    if (lightModeBtn) lightModeBtn.classList.add("active-toggle");
+    if (darkModeBtn) darkModeBtn.classList.remove("active-toggle");
 }
 
 function setDarkMode()
@@ -117,103 +146,77 @@ function setDarkMode()
     document.body.classList.remove("theme-light");
     document.body.classList.add("theme-dark");
 
-    darkModeBtn.classList.add("active-toggle");
-    lightModeBtn.classList.remove("active-toggle");
+    if (darkModeBtn) darkModeBtn.classList.add("active-toggle");
+    if (lightModeBtn) lightModeBtn.classList.remove("active-toggle");
 }
 
-lightModeBtn.addEventListener("click", setLightMode);
-darkModeBtn.addEventListener("click", setDarkMode);
-
-/* switching views */
-
-function showRoomView()
+if (lightModeBtn)
 {
-    roomView.classList.add("active-view-panel");
-    tileView.classList.remove("active-view-panel");
-
-    roomViewBtn.classList.add("active-toggle");
-    tileViewBtn.classList.remove("active-toggle");
-
-    startInteractiveGuide();
+    lightModeBtn.addEventListener("click", setLightMode);
 }
 
-function showTileView()
+if (darkModeBtn)
 {
-    tileView.classList.add("active-view-panel");
-    roomView.classList.remove("active-view-panel");
-
-    tileViewBtn.classList.add("active-toggle");
-    roomViewBtn.classList.remove("active-toggle");
-
-    hideInteractiveGuide();
+    darkModeBtn.addEventListener("click", setDarkMode);
 }
 
-roomViewBtn.addEventListener("click", showRoomView);
-tileViewBtn.addEventListener("click", showTileView);
-
-/* mute */
-
-muteToggle.addEventListener("click", () =>
-{
-    isMuted = !isMuted;
-    muteToggle.textContent = isMuted ? "🔇" : "🔊";
-});
-
-/* esc */
-
-document.addEventListener("keydown", (event) =>
-{
-    if (event.key === "Escape")
-    {
-        closeModal();
-        menuOverlay.classList.add("hidden");
-        hideInteractiveGuide();
-    }
-});
-
-/*guide */
+/* guide */
 
 function clearGuideTimers()
 {
-    clearTimeout(guideStepTimer1);
-    clearTimeout(guideStepTimer2);
-    clearTimeout(guideStepTimer3);
-    clearTimeout(guideSwapTimer);
+    clearTimeout(guideSequenceTimeout);
+    clearTimeout(guideFadeTimeout);
+    clearTimeout(guideSwapTimeout);
 }
 
 function hideInteractiveGuide()
 {
-    if (!interactiveGuide)
+    if (!interactiveGuide || !guideBox)
     {
         return;
     }
 
     clearGuideTimers();
+    guideBox.classList.remove("fade-swap");
     interactiveGuide.classList.add("hidden-guide");
 }
 
-function swapGuideToStepTwo()
+function setGuideMessage(message)
 {
-    if (!interactiveGuide || !guideText || !guideBox)
+    if (!guideText || !guideBox)
     {
         return;
     }
 
-    clearTimeout(guideStepTimer1);
-    clearTimeout(guideStepTimer2);
-
-    guideStep = 2;
     guideBox.classList.add("fade-swap");
 
-    guideSwapTimer = setTimeout(() =>
+    guideSwapTimeout = setTimeout(() =>
     {
-        guideText.textContent = "↗ Prefer a simpler view? Use the top-right menu to switch modes";
+        guideText.textContent = message;
         guideBox.classList.remove("fade-swap");
-    }, 250);
+    }, 180);
+}
 
-    guideStepTimer3 = setTimeout(() =>
+function advanceGuide()
+{
+    if (!interactiveGuide || interactiveGuide.classList.contains("hidden-guide"))
+    {
+        return;
+    }
+
+    guideStep += 1;
+
+    if (guideStep >= guideMessages.length)
     {
         hideInteractiveGuide();
+        return;
+    }
+
+    setGuideMessage(guideMessages[guideStep]);
+
+    guideSequenceTimeout = setTimeout(() =>
+    {
+        advanceGuide();
     }, 2600);
 }
 
@@ -226,18 +229,68 @@ function startInteractiveGuide()
 
     clearGuideTimers();
 
-    guideStep = 1;
-    interactiveGuide.classList.remove("hidden-guide");
+    guideStep = 0;
+    guideText.textContent = guideMessages[0];
     guideBox.classList.remove("fade-swap");
-    guideText.textContent = "Hover to explore ✦ Click to open";
+    interactiveGuide.classList.remove("hidden-guide");
 
-    guideStepTimer1 = setTimeout(() =>
+    guideSequenceTimeout = setTimeout(() =>
     {
-        swapGuideToStepTwo();
+        advanceGuide();
     }, 2600);
+
+    guideFadeTimeout = setTimeout(() =>
+    {
+        hideInteractiveGuide();
+    }, 5600);
 }
 
-/* click behaviors view */
+/* switching views */
+
+function showRoomView()
+{
+    if (roomView) roomView.classList.add("active-view-panel");
+    if (tileView) tileView.classList.remove("active-view-panel");
+
+    if (roomViewBtn) roomViewBtn.classList.add("active-toggle");
+    if (tileViewBtn) tileViewBtn.classList.remove("active-toggle");
+
+    startInteractiveGuide();
+}
+
+function showTileView()
+{
+    if (tileView) tileView.classList.add("active-view-panel");
+    if (roomView) roomView.classList.remove("active-view-panel");
+
+    if (tileViewBtn) tileViewBtn.classList.add("active-toggle");
+    if (roomViewBtn) roomViewBtn.classList.remove("active-toggle");
+
+    hideInteractiveGuide();
+}
+
+if (roomViewBtn)
+{
+    roomViewBtn.addEventListener("click", showRoomView);
+}
+
+if (tileViewBtn)
+{
+    tileViewBtn.addEventListener("click", showTileView);
+}
+
+/* mute */
+
+if (muteToggle)
+{
+    muteToggle.addEventListener("click", () =>
+    {
+        isMuted = !isMuted;
+        muteToggle.textContent = isMuted ? "🔇" : "🔊";
+    });
+}
+
+/* global clicks */
 
 document.addEventListener("click", (event) =>
 {
@@ -245,15 +298,8 @@ document.addEventListener("click", (event) =>
 
     if (clickedInsideGuide)
     {
-        if (guideStep === 1)
-        {
-            swapGuideToStepTwo();
-        }
-        else
-        {
-            hideInteractiveGuide();
-        }
-
+        clearGuideTimers();
+        advanceGuide();
         return;
     }
 
@@ -261,9 +307,28 @@ document.addEventListener("click", (event) =>
         event.target.closest(".room-object") ||
         event.target.closest(".tile-button") ||
         event.target.closest("#openMenu") ||
-        event.target.closest(".nav-btn")
+        event.target.closest(".nav-btn") ||
+        event.target.closest(".view-toggle") ||
+        event.target.closest(".mini-toggle")
     )
     {
+        hideInteractiveGuide();
+    }
+});
+
+/* esc */
+
+document.addEventListener("keydown", (event) =>
+{
+    if (event.key === "Escape")
+    {
+        closeModal();
+
+        if (menuOverlay)
+        {
+            menuOverlay.classList.add("hidden");
+        }
+
         hideInteractiveGuide();
     }
 });
@@ -330,7 +395,7 @@ function setupPlantAnimation()
     waterBtn.dataset.bound = "true";
 }
 
-/* photossss */
+/* photos */
 
 function setupPhotoGallery()
 {
@@ -391,6 +456,11 @@ async function loadRoomData()
 
 function renderRoomObjects(items)
 {
+    if (!roomHitboxArea)
+    {
+        return;
+    }
+
     roomHitboxArea.innerHTML = "";
 
     items.forEach((item) =>
@@ -406,7 +476,7 @@ function renderRoomObjects(items)
         if (item.width) button.style.width = item.width;
         if (item.height) button.style.height = item.height;
 
-        if (item.label && item.action !== "pet" && item.id !== "lamp" && item.id !== "window" && item.id !=="plants")
+        if (item.label && item.action !== "pet" && item.id !== "lamp" && item.id !== "window" && item.id !== "plants")
         {
             const pill = document.createElement("span");
             pill.className = "object-pill";
@@ -443,7 +513,7 @@ function renderRoomObjects(items)
         if (item.action === "pet")
         {
             const bubble = document.createElement("span");
-            bubble.className = item.bubbleType === "dog" ? "dog-bubble" : "dog-bubble";
+            bubble.className = "dog-bubble";
             button.appendChild(bubble);
 
             let currentMessage = -1;
@@ -492,16 +562,16 @@ function toggleWindow()
     if (windowNight) windowNight.classList.toggle("hidden");
 }
 
-/* starttt */
+/* start */
 
 showRoomView();
 loadRoomData();
 
 if (document.body.classList.contains("theme-dark"))
 {
-    darkModeBtn.classList.add("active-toggle");
+    if (darkModeBtn) darkModeBtn.classList.add("active-toggle");
 }
 else
 {
-    lightModeBtn.classList.add("active-toggle");
+    if (lightModeBtn) lightModeBtn.classList.add("active-toggle");
 }

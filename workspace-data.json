@@ -81,7 +81,15 @@
     "noteTitle": "Website",
     "noteText": "TODO: ✦ Add music ✦ Test mobile ✦ Add more photos ✦ Add more artwork ✦",
     "content": [
-      "Conceptualizing an interactive, walkable digital museum experience that allows users to explore curated art and artifacts in a 3D environment"
+      "Conceptualizing an interactive, walkable digital museum experience that allows users to explore curated art and artifacts in a 3D environment",
+      "I’m currently experimenting with performance optimization and learning how image handling impacts real-world load times.",
+        "I recently began testing my website performance using Google PageSpeed Insights and noticed that large image sizes were significantly impacting load times, especially on mobile devices.",
+  
+  "As a first step, I compressed my image assets across the site to reduce overall payload size and improve rendering performance.",
+  
+  "I am currently redeploying these changes and will be testing again shortly to evaluate how effectively the optimizations improved loading speed and user experience.",
+  
+  "This is something I am actively learning and refining as I continue developing the site."
     ]
   }
 
